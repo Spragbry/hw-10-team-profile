@@ -1,7 +1,9 @@
+import inquirer from 'inquirer'
 import Engineer from "../lib/Engineer"
 
-export const generateEngineer = () => { //do this for each role, will have to change questions based on role 10-42
-    inquire.prompt([
+
+export const generateEngineer = (callback) => {
+    inquirer.prompt([
       {
           type: "input",
           name: "question_1",
@@ -27,7 +29,7 @@ export const generateEngineer = () => { //do this for each role, will have to ch
       const email = answers["question_2"]
       const gitHub = answers["question_3"]
       const engineer = new Engineer(name, email, gitHub)
-      employees.push(engineer)
+      callback(engineer)
     })
     .catch(error => {
       console.error("error", error)

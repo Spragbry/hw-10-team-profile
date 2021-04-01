@@ -1,7 +1,9 @@
+import inquirer from 'inquirer'
 import Intern from "../lib/Intern"
 
-export const generateIntern = () => { 
-    inquire.prompt([
+
+export const generateIntern = (callback) => { 
+    inquirer.prompt([
       {
           type: "input",
           name: "question_1",
@@ -33,7 +35,7 @@ export const generateIntern = () => {
       const school = answers["question_3"]
       const idNum = answers["question_4"]
       const intern = new Intern(name, email, school, idNum)
-      employees.push(intern)
+      callback(intern)
     })
     .catch(error => {
       console.error("error", error)

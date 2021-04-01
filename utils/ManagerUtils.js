@@ -1,7 +1,8 @@
+import inquirer from 'inquirer'
 import Manager from "../lib/Manager"
 
-export const generateManager = () => { 
-    inquire.prompt([
+export const generateManager = (callback) => { 
+    inquirer.prompt([
       {
           type: "input",
           name: "question_1",
@@ -34,7 +35,7 @@ export const generateManager = () => {
       const officeNumber = answers["question_3"]
       const idNum = answers["question_4"]
       const manager = new Manager(name, email, officeNumber, idNum)
-      employees.push(manager)
+      callback(manager)
     })
     .catch(error => {
       console.error("error", error)

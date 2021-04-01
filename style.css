@@ -6,3 +6,9 @@ header {
     font-size: 30px;
   }
 
+#employee {
+    height: 300px;
+    width: 300px;
+    background-color: lightskyblue;
+    color: white;
+}

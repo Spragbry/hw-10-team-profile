@@ -1,44 +1,12 @@
-const fs = require('fs');
-var inquirer = require('inquirer');
+import {generateEmployee} from "./utils/GenerateUtils"
+let employees = []
 
-class Employee {
-    constructor(name, id, email) {
-        this.name = name
-        this.id = id
-        this.email = email
-    } 
-    
-    getName() {
-        return this.name
-    }
+generateEmployee((employee) => {
+  employees.push(employee)
+  console.log("employees Created:", employees)
+})
 
-    getEmail() {
-        return this.email
-    }
-
-    getId() {
-        return this.id
-    }
-
-    getRole() {
-        return "employee"
-    }
-}
-
-class Engineer extends Employee {
-    constructor(name, id, email, gitHub) {
-        super(name, id, email)
-        this.gitHub = gitHub
-    }
-
-    getGitHub() {
-        return this.gitHub
-    }
-}
-//let employee = new Employee("Bryce", 1, "spragbry@gmail.com") 
-//console.log("name:", engineer.getName())
-
-inquire.prompt([
+/*inquire.prompt([
     {
         type: "input",
         name: "question_1",
@@ -53,4 +21,4 @@ inquire.prompt([
 })
 .catch(error => {
   console.error("error", error)
-});
+});*/
