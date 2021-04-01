@@ -8,7 +8,7 @@ export const generateEmployee = (callback) => {
       {
           type: "list",
           name: "question_1",
-          message: "what is your name?",
+          message: "what is your occupation?",
           default: "",
           choices: ["engineer", "manager", "intern"]
       },
