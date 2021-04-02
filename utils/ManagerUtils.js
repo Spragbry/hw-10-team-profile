@@ -2,6 +2,7 @@ import inquirer from 'inquirer'
 import Manager from "../lib/Manager"
 
 export const generateManager = (callback) => { 
+  return new Promise((resolve, reject) => {
     inquirer.prompt([
       {
           type: "input",
@@ -27,17 +28,19 @@ export const generateManager = (callback) => {
         message: "what is your ID number?",
         default: ""
       },
-      
     ])
     .then(answers => {
       const name = answers["question_1"]
       const email = answers["question_2"]
       const officeNumber = answers["question_3"]
       const idNum = answers["question_4"]
-      const manager = new Manager(name, email, officeNumber, idNum)
+      const manager = new Manager(name, idNum, email, officeNumber)
       callback(manager)
+      resolve(manager)
     })
     .catch(error => {
       console.error("error", error)
-    });
-    } 
+      reject(error)
+    })
+  })
+} 

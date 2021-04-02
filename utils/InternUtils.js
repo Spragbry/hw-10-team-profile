@@ -3,6 +3,7 @@ import Intern from "../lib/Intern"
 
 
 export const generateIntern = (callback) => { 
+  return new Promise((resolve, reject) => {
     inquirer.prompt([
       {
           type: "input",
@@ -34,10 +35,13 @@ export const generateIntern = (callback) => {
       const email = answers["question_2"]
       const school = answers["question_3"]
       const idNum = answers["question_4"]
-      const intern = new Intern(name, email, school, idNum)
+      const intern = new Intern(name, idNum, email, school)
       callback(intern)
+      resolve(intern)
     })
     .catch(error => {
       console.error("error", error)
+      reject(error)
     });
-    } 
+  })
+} 

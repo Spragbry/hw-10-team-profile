@@ -3,6 +3,7 @@ import Engineer from "../lib/Engineer"
 
 
 export const generateEngineer = (callback) => {
+  return new Promise((resolve, reject) => {
     inquirer.prompt([
       {
           type: "input",
@@ -22,16 +23,25 @@ export const generateEngineer = (callback) => {
         message: "what is your gitHub username?",
         default: ""
       },
-      
+      {
+        type: "input",
+        name: "question_4",
+        message: "whats your id?",
+        default: ""
+      },
     ])
     .then(answers => {
       const name = answers["question_1"]
       const email = answers["question_2"]
       const gitHub = answers["question_3"]
-      const engineer = new Engineer(name, email, gitHub)
+      const id = answers["question_4"]
+      const engineer = new Engineer(name, id, email, gitHub)
       callback(engineer)
+      resolve(engineer)
     })
     .catch(error => {
       console.error("error", error)
+      reject(error)
     });
-    } 
+  })
+} 
