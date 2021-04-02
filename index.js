@@ -9,7 +9,7 @@ let employees = []
 
 
 const renderStart = () => {
-  return "<html><head></head><body><div style='display: flex; flex-direction: row;'>"
+  return `<html><head></head><body><h1 style="color: blue;">My Team</h1><div style='display: flex; flex-direction: row;'>`
 }
 
 const renderEnd = () => {
